@@ -22,19 +22,27 @@ export class Player {
   updateX() {
     this.x += this.velocityX;
 
-    if (this.x < 0) this.x = 0;
-    else if (this.x > this.game.width - this.width)
+    if (this.x < 0) {
+      this.x = 0;
+    } else if (this.x > this.game.width - this.width) {
       this.x = this.game.width - this.width;
+    }
   }
 
   updateVelocityX(input) {
-    if (input.includes("ArrowRight")) this.velocityX = this.maxVelocityX;
-    else if (input.includes("ArrowLeft")) this.velocityX = -this.maxVelocityX;
-    else this.velocityX = 0;
+    if (input.includes("ArrowRight")) {
+      this.velocityX = this.maxVelocityX;
+    } else if (input.includes("ArrowLeft")) {
+      this.velocityX = -this.maxVelocityX;
+    } else {
+      this.velocityX = 0;
+    }
   }
 
   updateY(input) {
-    if (input.includes("ArrowUp") && this.isOnGround()) this.velocityY -= 20;
+    if (input.includes("ArrowUp") && this.isOnGround()) {
+      this.velocityY -= 20;
+    }
     this.y += this.velocityY;
   }
 

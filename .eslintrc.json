@@ -15,6 +15,7 @@
       {
         "endOfLine": "auto"
       }
-    ]
+    ],
+    "curly": "error"
   }
 }
