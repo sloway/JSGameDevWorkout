@@ -9,6 +9,7 @@ import {
   Hit,
 } from "./playerState/playerStates.js";
 import { CollisionAnimation } from "./collisionAnimation.js";
+import { FloatingMessage } from "./floatingMessages.js";
 
 export class Player {
   constructor(game) {
@@ -169,8 +170,12 @@ export class Player {
           case this.states[PlayerStateList.ROLLING]:
           case this.states[PlayerStateList.DIVING]:
             ++this.game.score;
+            this.game.floatingMessages.push(
+              new FloatingMessage("+1", enemy.x, enemy.y, 150, 100)
+            );
             break;
           default:
+            this.game.score -= 5;
             if (--this.game.lives <= 0) {
               this.game.gameOver = true;
             }
