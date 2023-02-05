@@ -1,24 +1,31 @@
 import { PlayerState } from "./playerState.js";
 import { PlayerStateList } from "./playerStates.js";
+import Dust from "../particle/dust.js";
 
 export default class Running extends PlayerState {
-  constructor(player) {
-    super("RUNNING");
-    this.player = player;
+  constructor(game) {
+    super("RUNNING", game);
   }
 
   enter() {
-    this.player.frameCount = 9;
-    this.player.frameY = 3;
+    this.game.player.frameCount = 9;
+    this.game.player.frameY = 3;
   }
 
   handleInput(input) {
+    this.game.particles.push(
+      new Dust(
+        this.game,
+        this.game.player.x + this.game.player.width * 0.6,
+        this.game.player.y + this.game.player.height
+      )
+    );
     if (input.includes("ArrowDown")) {
-      this.player.setState(PlayerStateList.SITTING, 0);
+      this.game.player.setState(PlayerStateList.SITTING, 0);
     } else if (input.includes("ArrowUp")) {
-      this.player.setState(PlayerStateList.JUMPING, 1);
+      this.game.player.setState(PlayerStateList.JUMPING, 1);
     } else if (input.includes("Enter")) {
-      this.player.setState(PlayerStateList.ROLLING, 2);
+      this.game.player.setState(PlayerStateList.ROLLING, 2);
     }
   }
 }

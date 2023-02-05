@@ -2,19 +2,18 @@ import { PlayerState } from "./playerState.js";
 import { PlayerStateList } from "./playerStates.js";
 
 export default class Falling extends PlayerState {
-  constructor(player) {
-    super("FALLING");
-    this.player = player;
+  constructor(game) {
+    super("FALLING", game);
   }
 
   enter() {
-    this.player.frameCount = 7;
-    this.player.frameY = 2;
+    this.game.player.frameCount = 7;
+    this.game.player.frameY = 2;
   }
 
   handleInput() {
-    if (this.player.isOnGround()) {
-      this.player.setState(PlayerStateList.RUNNING, 1);
+    if (this.game.player.isOnGround()) {
+      this.game.player.setState(PlayerStateList.RUNNING, 1);
     }
   }
 }

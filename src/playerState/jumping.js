@@ -2,28 +2,27 @@ import { PlayerState } from "./playerState.js";
 import { PlayerStateList } from "./playerStates.js";
 
 export default class Jumping extends PlayerState {
-  constructor(player) {
-    super("JUMPING");
-    this.player = player;
+  constructor(game) {
+    super("JUMPING", game);
   }
 
   enter() {
-    if (this.player.isOnGround()) {
-      this.player.velocityY -= 27;
+    if (this.game.player.isOnGround()) {
+      this.game.player.velocityY -= 27;
     }
-    this.player.frameCount = 7;
-    this.player.frameY = 1;
+    this.game.player.frameCount = 7;
+    this.game.player.frameY = 1;
   }
 
   handleInput(input) {
     if (this.isAtPeak()) {
-      this.player.setState(PlayerStateList.FALLING, 1);
+      this.game.player.setState(PlayerStateList.FALLING, 1);
     } else if (input.includes("Enter")) {
-      this.player.setState(PlayerStateList.ROLLING, 2);
+      this.game.player.setState(PlayerStateList.ROLLING, 2);
     }
   }
 
   isAtPeak() {
-    return this.player.velocityY > this.player.weight;
+    return this.game.player.velocityY > this.game.player.weight;
   }
 }

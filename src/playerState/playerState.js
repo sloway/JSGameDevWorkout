@@ -1,6 +1,7 @@
 export class PlayerState {
-  constructor(state) {
+  constructor(state, game) {
     this.state = state;
+    this.game = game;
   }
 
   enter() {

@@ -41,14 +41,12 @@ export class Player {
 
   initState() {
     this.states = [
-      new Sitting(this),
-      new Running(this),
-      new Jumping(this),
-      new Falling(this),
-      new Rolling(this),
+      new Sitting(this.game),
+      new Running(this.game),
+      new Jumping(this.game),
+      new Falling(this.game),
+      new Rolling(this.game),
     ];
-
-    this.setState(0, 0);
   }
 
   update(input, deltaTime) {
@@ -131,6 +129,10 @@ export class Player {
     this.game.speed = this.game.maxSpeed * speed;
     this.currentState.enter();
     this.frameX = 0;
+  }
+
+  setDefaultState() {
+    this.setState(0, 0);
   }
 
   checkCollision() {
