@@ -41,9 +41,9 @@ export class Background {
     this.backgroundLayers = [];
     for (let i = 0; i < 5; ++i) {
       let image = document.getElementById("layer" + (i + 1));
-      let speed = 0.2 * i;
+      let speedModifier = 0.2 + 0.2 * i;
       this.backgroundLayers.push(
-        new Layer(this.game, this.width, this.height, speed, image)
+        new Layer(this.game, this.width, this.height, speedModifier, image)
       );
     }
   }
