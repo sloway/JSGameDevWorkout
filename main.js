@@ -1,7 +1,7 @@
 import Stats from "./Stats.js";
 import { Player } from "./player.js";
 import { InputHandler } from "./input.js";
-
+import { Background } from "./background.js";
 var stats;
 function initPerformanceMonitor() {
   stats = new Stats();
@@ -22,15 +22,19 @@ window.addEventListener("load", () => {
       this.width = width;
       this.height = height;
       this.groundMargin = 50;
+      this.speed = 3;
+      this.background = new Background(this);
       this.player = new Player(this);
       this.input = new InputHandler();
     }
 
     update(deltaTime) {
+      this.background.update(deltaTime);
       this.player.update(this.input.keys, deltaTime);
     }
 
     draw(context) {
+      this.background.draw(context);
       this.player.draw(context);
     }
   }
