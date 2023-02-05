@@ -1,5 +1,6 @@
-import { Player } from "./player.js";
 import Stats from "./Stats.js";
+import { Player } from "./player.js";
+import { InputHandler } from "./input.js";
 
 var stats;
 function initPerformanceMonitor() {
@@ -21,10 +22,11 @@ window.addEventListener("load", () => {
       this.width = width;
       this.height = height;
       this.player = new Player(this);
+      this.input = new InputHandler();
     }
 
     update() {
-      this.player.update();
+      this.player.update(this.input.keys);
     }
 
     draw(context) {
