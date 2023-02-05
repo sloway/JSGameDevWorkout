@@ -5,6 +5,14 @@ export class Player {
     this.game = game;
     this.initTransform();
     this.initState();
+    this.initSprite();
+  }
+
+  initSprite() {
+    this.image = document.getElementById("player");
+    this.frameX = 0;
+    this.frameY = 0;
+    this.maxFrame = 5;
   }
 
   initTransform() {
@@ -12,9 +20,6 @@ export class Player {
     this.height = 91.3;
     this.x = 0;
     this.y = this.game.height - this.height;
-    this.image = document.getElementById("player");
-    this.frameX = 0;
-    this.frameY = 0;
     this.velocityY = 0;
     this.weight = 1;
     this.velocityX = 0;
@@ -38,6 +43,7 @@ export class Player {
     this.updateVelocityX(input);
     this.updateY();
     this.updateVelocityY();
+    this.updateSprite();
   }
 
   updateX() {
@@ -69,6 +75,14 @@ export class Player {
       this.velocityY = 0;
     } else {
       this.velocityY += this.weight;
+    }
+  }
+
+  updateSprite() {
+    if (this.frameX < this.maxFrame) {
+      ++this.frameX;
+    } else {
+      this.frameX = 0;
     }
   }
 
