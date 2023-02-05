@@ -4,6 +4,7 @@ import Jumping from "./jumping.js";
 import Falling from "./falling.js";
 import Rolling from "./rolling.js";
 import Diving from "./diving.js";
+import Hit from "./hit.js";
 
 export const PlayerStateList = {
   SITTING: 0,
@@ -15,4 +16,4 @@ export const PlayerStateList = {
   HIT: 6,
 };
 
-export { Sitting, Running, Jumping, Falling, Rolling, Diving };
+export { Sitting, Running, Jumping, Falling, Rolling, Diving, Hit };

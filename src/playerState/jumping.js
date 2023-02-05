@@ -11,6 +11,7 @@ export default class Jumping extends PlayerState {
       this.game.player.velocityY -= 27;
     }
     this.game.player.frameCount = 7;
+    this.game.player.frameX = 0;
     this.game.player.frameY = 1;
   }
 

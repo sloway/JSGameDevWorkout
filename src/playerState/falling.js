@@ -8,6 +8,7 @@ export default class Falling extends PlayerState {
 
   enter() {
     this.game.player.frameCount = 7;
+    this.game.player.frameX = 0;
     this.game.player.frameY = 2;
   }
 
