@@ -40,7 +40,7 @@ window.addEventListener("load", () => {
       this.score = 0;
       this.fontColor = "black";
       this.time = 0;
-      this.maxTime = 10000;
+      this.maxTime = 30000;
       this.gameOver = false;
       this.player.setDefaultState();
     }

@@ -21,17 +21,15 @@ export default class Rolling extends PlayerState {
         this.game.player.y + this.game.player.height * 0.5
       )
     );
-    if (input.includes("Enter")) {
-      if (input.includes("ArrowUp") && this.game.player.isOnGround()) {
-        this.game.player.velocityY -= 27;
-      }
-    } else {
-      this.game.player.setState(
-        this.game.player.isOnGround()
-          ? PlayerStateList.RUNNING
-          : PlayerStateList.FALLING,
-        1
-      );
+
+    if (!input.includes("Enter") && this.game.player.isOnGround()) {
+      this.game.player.setState(PlayerStateList.RUNNING, 1);
+    } else if (!input.includes("Enter") && !this.game.player.isOnGround()) {
+      this.game.player.setState(PlayerStateList.FALLING, 1);
+    } else if (input.includes("Enter") && input.includes("ArrowUp")) {
+      this.game.player.velocityY = -27;
+    } else if (input.includes("ArrowDown") && !this.game.player.isOnGround()) {
+      this.game.player.setState(PlayerStateList.DIVING, 0);
     }
   }
 }

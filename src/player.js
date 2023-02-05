@@ -76,9 +76,15 @@ export class Player {
   }
 
   updateSpeedX(input) {
-    if (input.includes("ArrowRight")) {
+    if (
+      input.includes("ArrowRight") &&
+      this.currentState !== this.states[PlayerStateList.HIT]
+    ) {
       this.speedX = this.maxSpeedX;
-    } else if (input.includes("ArrowLeft")) {
+    } else if (
+      input.includes("ArrowLeft") &&
+      this.currentState !== this.states[PlayerStateList.HIT]
+    ) {
       this.speedX = -this.maxSpeedX;
     } else {
       this.speedX = 0;
