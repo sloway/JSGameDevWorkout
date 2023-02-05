@@ -35,6 +35,7 @@ window.addEventListener("load", () => {
       this.enemyTimer = 0;
       this.enemyInterval = 1000;
       this.debug = true;
+      this.score = 0;
     }
 
     update(deltaTime) {

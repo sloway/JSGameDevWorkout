@@ -45,6 +45,7 @@ export class Player {
   }
 
   update(input, deltaTime) {
+    this.checkCollision();
     this.currentState.handleInput(input);
     this.updateX();
     this.updateSpeedX(input);
@@ -123,5 +124,21 @@ export class Player {
     this.game.speed = this.game.maxSpeed * speed;
     this.currentState.enter();
     this.frameX = 0;
+  }
+
+  checkCollision() {
+    this.game.enemies.forEach((enemy) => {
+      if (
+        enemy.x < this.x + this.width &&
+        enemy.x + enemy.width > this.x &&
+        enemy.y < this.y + this.height &&
+        enemy.y + enemy.height > this.y
+      ) {
+        enemy.markedForDeletion = true;
+        ++this.game.score;
+      } else {
+        // no collision
+      }
+    });
   }
 }
