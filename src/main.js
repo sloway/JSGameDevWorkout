@@ -42,6 +42,7 @@ window.addEventListener("load", () => {
       this.time = 0;
       this.maxTime = 30000;
       this.gameOver = false;
+      this.lives = 5;
       this.player.setDefaultState();
     }
 

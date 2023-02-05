@@ -171,6 +171,9 @@ export class Player {
             ++this.game.score;
             break;
           default:
+            if (--this.game.lives <= 0) {
+              this.game.gameOver = true;
+            }
             this.setState(PlayerStateList.HIT, 0);
         }
       }
