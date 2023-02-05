@@ -2,8 +2,7 @@ import Enemy from "./enemies.js";
 
 export default class FlyingEnemy extends Enemy {
   constructor(game) {
-    super();
-    this.game = game;
+    super(game);
     this.width = 60;
     this.height = 44;
     this.x = this.game.width + Math.random() * this.game.width * 0.5;

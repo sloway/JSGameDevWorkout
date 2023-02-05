@@ -2,8 +2,7 @@ import Enemy from "./enemies.js";
 
 export default class ClimbingEnemy extends Enemy {
   constructor(game) {
-    super();
-    this.game = game;
+    super(game);
     this.width = 120;
     this.height = 144;
     this.x = this.game.width;
