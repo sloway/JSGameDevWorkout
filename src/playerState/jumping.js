@@ -15,9 +15,11 @@ export default class Jumping extends PlayerState {
     this.player.frameY = 1;
   }
 
-  handleInput() {
+  handleInput(input) {
     if (this.isAtPeak()) {
       this.player.setState(PlayerStateList.FALLING, 1);
+    } else if (input.includes("Enter")) {
+      this.player.setState(PlayerStateList.ROLLING, 2);
     }
   }
 

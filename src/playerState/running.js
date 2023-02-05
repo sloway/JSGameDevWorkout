@@ -17,6 +17,8 @@ export default class Running extends PlayerState {
       this.player.setState(PlayerStateList.SITTING, 0);
     } else if (input.includes("ArrowUp")) {
       this.player.setState(PlayerStateList.JUMPING, 1);
+    } else if (input.includes("Enter")) {
+      this.player.setState(PlayerStateList.ROLLING, 2);
     }
   }
 }
