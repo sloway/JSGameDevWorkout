@@ -29,8 +29,8 @@ export class Player {
     this.y = this.game.height - this.height - this.game.groundMargin;
     this.velocityY = 0;
     this.weight = 1;
-    this.velocityX = 0;
-    this.maxVelocityX = 10;
+    this.speedX = 0;
+    this.maxSpeedX = 10;
   }
 
   initState() {
@@ -47,14 +47,14 @@ export class Player {
   update(input, deltaTime) {
     this.currentState.handleInput(input);
     this.updateX();
-    this.updateVelocityX(input);
+    this.updateSpeedX(input);
     this.updateY();
     this.updateVelocityY();
     this.updateSprite(deltaTime);
   }
 
   updateX() {
-    this.x += this.velocityX;
+    this.x += this.speedX;
 
     if (this.x < 0) {
       this.x = 0;
@@ -63,13 +63,13 @@ export class Player {
     }
   }
 
-  updateVelocityX(input) {
+  updateSpeedX(input) {
     if (input.includes("ArrowRight")) {
-      this.velocityX = this.maxVelocityX;
+      this.speedX = this.maxSpeedX;
     } else if (input.includes("ArrowLeft")) {
-      this.velocityX = -this.maxVelocityX;
+      this.speedX = -this.maxSpeedX;
     } else {
-      this.velocityX = 0;
+      this.speedX = 0;
     }
   }
 
