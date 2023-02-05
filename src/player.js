@@ -151,13 +151,13 @@ export class Player {
         enemy.y + enemy.height > this.y
       ) {
         enemy.markedForDeletion = true;
-        if (
-          this.currentState === this.states[PlayerStateList.ROLLING] ||
-          this.currentState === this.states[PlayerStateList.DIVING]
-        ) {
-          ++this.game.score;
-        } else {
-          this.setState(PlayerStateList.HIT, 0);
+        switch (this.currentState) {
+          case this.states[PlayerStateList.ROLLING]:
+          case this.states[PlayerStateList.DIVING]:
+            ++this.game.score;
+            break;
+          default:
+            this.setState(PlayerStateList.HIT, 0);
         }
       }
     });
