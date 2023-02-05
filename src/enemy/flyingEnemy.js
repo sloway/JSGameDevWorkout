@@ -1,4 +1,4 @@
-import Enemy from "./enemies.js";
+import Enemy from "./enemy.js";
 
 export default class FlyingEnemy extends Enemy {
   constructor(game) {

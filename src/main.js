@@ -2,9 +2,7 @@ import Stats from "./Stats.js";
 import { Player } from "./player.js";
 import { InputHandler } from "./input.js";
 import { Background } from "./background.js";
-import FlyingEnemy from "./enemy/flyingEnemy.js";
-import ClimbingEnemy from "./enemy/climbingEnemy.js";
-import GroundEnemy from "./enemy/groundEnemy.js";
+import { FlyingEnemy, ClimbingEnemy, GroundEnemy } from "./enemy/enemies.js";
 import { UI } from "./UI.js";
 var stats;
 function initPerformanceMonitor() {
