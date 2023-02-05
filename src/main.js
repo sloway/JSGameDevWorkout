@@ -32,6 +32,7 @@ window.addEventListener("load", () => {
       this.UI = new UI(this);
       this.enemies = [];
       this.particles = [];
+      this.collisions = [];
       this.maxPartiles = 200;
       this.enemyTimer = 0;
       this.enemyInterval = 1000;
@@ -69,6 +70,13 @@ window.addEventListener("load", () => {
       if (this.particles.length > this.maxPartiles) {
         this.particles = this.particles.slice(0, this.maxPartiles);
       }
+
+      this.collisions.forEach((collision, index) => {
+        collision.update(deltaTime);
+        if (collision.markedForDeletion) {
+          this.collisions.splice(index, 1);
+        }
+      });
     }
 
     draw(context) {
@@ -79,6 +87,9 @@ window.addEventListener("load", () => {
       });
       this.particles.forEach((particle) => {
         particle.draw(context);
+      });
+      this.collisions.forEach((collision) => {
+        collision.draw(context);
       });
       this.UI.draw(context);
     }

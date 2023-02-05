@@ -9,6 +9,7 @@ export default class Running extends PlayerState {
 
   enter() {
     this.game.player.frameCount = 9;
+    this.game.player.frameX = 0;
     this.game.player.frameY = 3;
   }
 
