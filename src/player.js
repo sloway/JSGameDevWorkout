@@ -1,4 +1,9 @@
-import { Sitting, Running, Jumping, Falling } from "./playerStates.js";
+import {
+  Sitting,
+  Running,
+  Jumping,
+  Falling,
+} from "./playerState/playerStates.js";
 
 export class Player {
   constructor(game) {
