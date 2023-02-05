@@ -75,7 +75,7 @@ window.addEventListener("load", () => {
       });
 
       if (this.particles.length > this.maxPartiles) {
-        this.particles = this.particles.slice(0, this.maxPartiles);
+        this.particles.length = this.maxPartiles;
       }
 
       this.collisions.forEach((collision, index) => {
