@@ -39,10 +39,17 @@ window.addEventListener("load", () => {
       this.debug = false;
       this.score = 0;
       this.fontColor = "black";
+      this.time = 0;
+      this.maxTime = 10000;
+      this.gameOver = false;
       this.player.setDefaultState();
     }
 
     update(deltaTime) {
+      this.time += deltaTime;
+      if (this.time > this.maxTime) {
+        this.gameOver = true;
+      }
       this.background.update(deltaTime);
       this.player.update(this.input.keys, deltaTime);
 
@@ -118,7 +125,9 @@ window.addEventListener("load", () => {
     game.draw(ctx);
 
     stats.end();
-    requestAnimationFrame(animate);
+    if (!game.gameOver) {
+      requestAnimationFrame(animate);
+    }
   }
 
   animate(0);
