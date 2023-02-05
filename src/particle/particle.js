@@ -1,7 +1,7 @@
 export default class Particle {
   constructor(game) {
     this.game = game;
-    this.makredForDeletion = false;
+    this.markedForDeletion = false;
   }
 
   update() {
@@ -9,7 +9,7 @@ export default class Particle {
     this.y -= this.speedY;
     this.size *= 0.95;
     if (this.size < 0.5) {
-      this.makredForDeletion = true;
+      this.markedForDeletion = true;
     }
   }
 }

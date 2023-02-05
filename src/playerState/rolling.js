@@ -1,5 +1,6 @@
 import { PlayerState } from "./playerState.js";
 import { PlayerStateList } from "./playerStates.js";
+import Fire from "../particle/fire.js";
 
 export default class Rolling extends PlayerState {
   constructor(game) {
@@ -13,6 +14,13 @@ export default class Rolling extends PlayerState {
   }
 
   handleInput(input) {
+    this.game.particles.unshift(
+      new Fire(
+        this.game,
+        this.game.player.x + this.game.player.width * 0.5,
+        this.game.player.y + this.game.player.height * 0.5
+      )
+    );
     if (input.includes("Enter")) {
       if (input.includes("ArrowUp") && this.game.player.isOnGround()) {
         this.game.player.velocityY -= 27;

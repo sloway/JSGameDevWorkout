@@ -13,7 +13,7 @@ export default class Running extends PlayerState {
   }
 
   handleInput(input) {
-    this.game.particles.push(
+    this.game.particles.unshift(
       new Dust(
         this.game,
         this.game.player.x + this.game.player.width * 0.6,

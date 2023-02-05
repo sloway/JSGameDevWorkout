@@ -32,6 +32,7 @@ window.addEventListener("load", () => {
       this.UI = new UI(this);
       this.enemies = [];
       this.particles = [];
+      this.maxPartiles = 200;
       this.enemyTimer = 0;
       this.enemyInterval = 1000;
       this.debug = true;
@@ -64,6 +65,10 @@ window.addEventListener("load", () => {
           this.particles.splice(index, 1);
         }
       });
+
+      if (this.particles.length > this.maxPartiles) {
+        this.particles = this.particles.slice(0, this.maxPartiles);
+      }
     }
 
     draw(context) {
