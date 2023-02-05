@@ -26,7 +26,7 @@ export class Player {
     this.width = 100;
     this.height = 91.3;
     this.x = 0;
-    this.y = this.game.height - this.height;
+    this.y = this.game.height - this.height - this.game.groundMargin;
     this.velocityY = 0;
     this.weight = 1;
     this.velocityX = 0;
@@ -111,7 +111,7 @@ export class Player {
   }
 
   isOnGround() {
-    return this.y >= this.game.height - this.height;
+    return this.y >= this.game.height - this.height - this.game.groundMargin;
   }
 
   setState(state) {
