@@ -19,6 +19,13 @@ class Layer {
 
   draw(context) {
     context.drawImage(this.image, this.x, this.y, this.width, this.height);
+    context.drawImage(
+      this.image,
+      this.x + this.width,
+      this.y,
+      this.width,
+      this.height
+    );
   }
 }
 
@@ -27,15 +34,18 @@ export class Background {
     this.game = game;
     this.width = 1667;
     this.height = 500;
-    this.layer5image = document.getElementById("layer5");
-    this.layer1 = new Layer(
-      this.game,
-      this.width,
-      this.height,
-      1,
-      this.layer5image
-    );
-    this.backgroundLayers = [this.layer1];
+    this.initLayers();
+  }
+
+  initLayers() {
+    this.backgroundLayers = [];
+    for (let i = 0; i < 5; ++i) {
+      let image = document.getElementById("layer" + (i + 1));
+      let speed = 0.2 * i;
+      this.backgroundLayers.push(
+        new Layer(this.game, this.width, this.height, speed, image)
+      );
+    }
   }
 
   update() {

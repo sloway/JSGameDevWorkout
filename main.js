@@ -21,7 +21,7 @@ window.addEventListener("load", () => {
     constructor(width, height) {
       this.width = width;
       this.height = height;
-      this.groundMargin = 50;
+      this.groundMargin = 80;
       this.speed = 3;
       this.background = new Background(this);
       this.player = new Player(this);
