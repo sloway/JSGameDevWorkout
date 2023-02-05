@@ -11,9 +11,11 @@ export default class Falling extends PlayerState {
     this.game.player.frameY = 2;
   }
 
-  handleInput() {
+  handleInput(input) {
     if (this.game.player.isOnGround()) {
       this.game.player.setState(PlayerStateList.RUNNING, 1);
+    } else if (input.includes("ArrowDown")) {
+      this.game.player.setState(PlayerStateList.DIVING, 0);
     }
   }
 }

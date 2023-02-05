@@ -19,6 +19,8 @@ export default class Jumping extends PlayerState {
       this.game.player.setState(PlayerStateList.FALLING, 1);
     } else if (input.includes("Enter")) {
       this.game.player.setState(PlayerStateList.ROLLING, 2);
+    } else if (input.includes("ArrowDown")) {
+      this.game.player.setState(PlayerStateList.DIVING, 0);
     }
   }
 

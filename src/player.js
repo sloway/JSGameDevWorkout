@@ -4,6 +4,7 @@ import {
   Jumping,
   Falling,
   Rolling,
+  Diving,
 } from "./playerState/playerStates.js";
 
 export class Player {
@@ -46,6 +47,7 @@ export class Player {
       new Jumping(this.game),
       new Falling(this.game),
       new Rolling(this.game),
+      new Diving(this.game),
     ];
   }
 
@@ -81,6 +83,9 @@ export class Player {
 
   updateY() {
     this.y += this.velocityY;
+    if (this.isOnGround()) {
+      this.y = this.game.height - this.height - this.game.groundMargin;
+    }
   }
 
   updateVelocityY() {
