@@ -26,6 +26,7 @@ export class Sitting extends State {
   }
 
   enter() {
+    this.player.frameCount = 5;
     this.player.frameY = 5;
   }
 
@@ -43,6 +44,7 @@ export class Running extends State {
   }
 
   enter() {
+    this.player.frameCount = 9;
     this.player.frameY = 3;
   }
 
@@ -65,6 +67,7 @@ export class Jumping extends State {
     if (this.player.isOnGround()) {
       this.player.velocityY -= 27;
     }
+    this.player.frameCount = 7;
     this.player.frameY = 1;
   }
 
@@ -86,6 +89,7 @@ export class Falling extends State {
   }
 
   enter() {
+    this.player.frameCount = 7;
     this.player.frameY = 2;
   }
 

@@ -6,13 +6,20 @@ export class Player {
     this.initTransform();
     this.initState();
     this.initSprite();
+    this.initFrameRate();
+  }
+
+  initFrameRate() {
+    this.fps = 20;
+    this.frameInterval = 1000 / this.fps;
+    this.frameTimer = 0;
   }
 
   initSprite() {
     this.image = document.getElementById("player");
     this.frameX = 0;
     this.frameY = 0;
-    this.maxFrame = 5;
+    this.frameCount = 5;
   }
 
   initTransform() {
@@ -37,13 +44,13 @@ export class Player {
     this.setState(0);
   }
 
-  update(input) {
+  update(input, deltaTime) {
     this.currentState.handleInput(input);
     this.updateX();
     this.updateVelocityX(input);
     this.updateY();
     this.updateVelocityY();
-    this.updateSprite();
+    this.updateSprite(deltaTime);
   }
 
   updateX() {
@@ -78,11 +85,14 @@ export class Player {
     }
   }
 
-  updateSprite() {
-    if (this.frameX < this.maxFrame) {
-      ++this.frameX;
+  updateSprite(deltaTime) {
+    if (this.frameTimer > this.frameInterval) {
+      this.frameTimer = 0;
+      if (++this.frameX >= this.frameCount) {
+        this.frameX = 0;
+      }
     } else {
-      this.frameX = 0;
+      this.frameTimer += deltaTime;
     }
   }
 
@@ -107,5 +117,6 @@ export class Player {
   setState(state) {
     this.currentState = this.states[state];
     this.currentState.enter();
+    this.frameX = 0;
   }
 }
