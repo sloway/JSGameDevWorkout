@@ -6,19 +6,44 @@ export class Player {
     this.x = 0;
     this.y = this.game.height - this.height;
     this.image = document.getElementById("player");
-    this.speed = 0;
-    this.maxSpeed = 10;
+    this.velocityY = 0;
+    this.weight = 1;
+    this.velocityX = 0;
+    this.maxVelocityX = 10;
   }
 
   update(input) {
-    this.x += this.speed;
-    if (input.includes("ArrowRight")) this.speed = this.maxSpeed;
-    else if (input.includes("ArrowLeft")) this.speed = -this.maxSpeed;
-    else this.speed = 0;
+    this.updateX();
+    this.updateVelocityX(input);
+    this.updateY(input);
+    this.updateVelocityY();
+  }
+
+  updateX() {
+    this.x += this.velocityX;
 
     if (this.x < 0) this.x = 0;
-    if (this.x > this.game.width - this.width)
+    else if (this.x > this.game.width - this.width)
       this.x = this.game.width - this.width;
+  }
+
+  updateVelocityX(input) {
+    if (input.includes("ArrowRight")) this.velocityX = this.maxVelocityX;
+    else if (input.includes("ArrowLeft")) this.velocityX = -this.maxVelocityX;
+    else this.velocityX = 0;
+  }
+
+  updateY(input) {
+    if (input.includes("ArrowUp") && this.isOnGround()) this.velocityY -= 20;
+    this.y += this.velocityY;
+  }
+
+  updateVelocityY() {
+    if (this.isOnGround()) {
+      this.velocityY = 0;
+    } else {
+      this.velocityY += this.weight;
+    }
   }
 
   draw(context) {
@@ -33,5 +58,9 @@ export class Player {
       this.width,
       this.height
     );
+  }
+
+  isOnGround() {
+    return this.y >= this.game.height - this.height;
   }
 }
