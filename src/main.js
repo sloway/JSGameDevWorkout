@@ -5,7 +5,7 @@ import { Background } from "./background.js";
 import FlyingEnemy from "./enemy/flyingEnemy.js";
 import ClimbingEnemy from "./enemy/climbingEnemy.js";
 import GroundEnemy from "./enemy/groundEnemy.js";
-
+import { UI } from "./UI.js";
 var stats;
 function initPerformanceMonitor() {
   stats = new Stats();
@@ -31,11 +31,13 @@ window.addEventListener("load", () => {
       this.background = new Background(this);
       this.player = new Player(this);
       this.input = new InputHandler(this);
+      this.UI = new UI(this);
       this.enemies = [];
       this.enemyTimer = 0;
       this.enemyInterval = 1000;
       this.debug = true;
       this.score = 0;
+      this.fontColor = "black";
     }
 
     update(deltaTime) {
@@ -63,6 +65,7 @@ window.addEventListener("load", () => {
       this.enemies.forEach((enemy) => {
         enemy.draw(context);
       });
+      this.UI.draw(context);
     }
 
     addEnemy() {
