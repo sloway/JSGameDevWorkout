@@ -4,6 +4,7 @@ import { InputHandler } from "./input.js";
 import { Background } from "./background.js";
 import { FlyingEnemy, ClimbingEnemy, GroundEnemy } from "./enemy/enemies.js";
 import { UI } from "./UI.js";
+import { getMedia } from "./webcam.js";
 var stats;
 function initPerformanceMonitor() {
   stats = new Stats();
@@ -11,14 +12,19 @@ function initPerformanceMonitor() {
   document.body.appendChild(stats.dom);
 }
 
-window.addEventListener("load", () => {
+window.addEventListener("load", async () => {
   initPerformanceMonitor();
+
+  await getMedia();
 
   const canvas = document.getElementById("canvas1");
   const ctx = canvas.getContext("2d");
   canvas.width = 1600;
   canvas.height = 900;
 
+  const webcam = document.getElementById("webcam");
+  webcam.width = canvas.width;
+  webcam.height = canvas.height;
   class Game {
     constructor(width, height) {
       this.width = width;

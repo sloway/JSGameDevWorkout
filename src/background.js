@@ -39,7 +39,7 @@ export class Background {
 
   initLayers() {
     this.backgroundLayers = [];
-    for (let i = 0; i < 5; ++i) {
+    for (let i = 1; i < 5; ++i) {
       let image = document.getElementById("layer" + (i + 1));
       let speedModifier = 0.2 + 0.2 * i;
       this.backgroundLayers.push(
