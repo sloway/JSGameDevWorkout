@@ -17,6 +17,9 @@ window.addEventListener("load", async () => {
 
   await getMedia();
 
+  let bgm = document.querySelector("audio");
+  bgm.play();
+
   const canvas = document.getElementById("canvas1");
   const ctx = canvas.getContext("2d");
   canvas.width = 1600;
