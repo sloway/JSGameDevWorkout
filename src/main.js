@@ -16,14 +16,14 @@ window.addEventListener("load", () => {
 
   const canvas = document.getElementById("canvas1");
   const ctx = canvas.getContext("2d");
-  canvas.width = 900;
-  canvas.height = 500;
+  canvas.width = 1600;
+  canvas.height = 900;
 
   class Game {
     constructor(width, height) {
       this.width = width;
       this.height = height;
-      this.groundMargin = 80;
+      this.groundMargin = 150;
       this.speed = 0;
       this.maxSpeed = 3;
       this.background = new Background(this);
@@ -42,9 +42,9 @@ window.addEventListener("load", () => {
       this.winningScore = 40;
       this.fontColor = "black";
       this.time = 0;
-      this.maxTime = 30000;
+      this.maxTime = 300000;
       this.gameOver = false;
-      this.lives = 5;
+      this.lives = 50;
       this.player.setDefaultState();
     }
 
